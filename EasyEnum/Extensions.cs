@@ -2,18 +2,40 @@
 {
     public static class Extensions
     {
+        /// <summary>
+        /// <see href="EN"/> : Returns the enum's index number. | 
+        /// <see href="TR"/> : Enum'un indis numarasını verir.
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enum"></param>
+        /// <returns></returns>
         public static int GetEnumIndex<TEnum>(this TEnum @enum) where TEnum : struct, Enum
         {
             Array values = typeof(TEnum).GetEnumValues();
             return Array.IndexOf(values, @enum);
         }
 
+        /// <summary>
+        /// <see href="EN"/> : Returns the name of the enum. | 
+        /// <see href="TR"/> : Enum'un adını verir.
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enum"></param>
+        /// <returns></returns>
         public static string GetEnumName<TEnum>(this TEnum @enum) where TEnum : struct, Enum
         {
             var enumText = Enum.GetName(typeof(TEnum), @enum);
             return enumText;
         }
 
+        /// <summary>
+        /// <see href="EN"/> : Returns the assigned value of the Attribute of the Enum, whose Type is given. | 
+        /// <see href="TR"/> : Enum'a ait, Tipi verilen Özniteliğin atanan değerini verir.
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enum"></param>
+        /// <param name="customAttributeType"></param>
+        /// <returns></returns>
         public static object GetEnumCustomAttributeValue<TEnum>(this TEnum @enum, Type customAttributeType) where TEnum : struct, Enum
         {
             var enumMember = typeof(TEnum).GetMember(@enum.GetEnumName()).FirstOrDefault();
@@ -26,6 +48,13 @@
             return enumAttributeValue;
         }
 
+        /// <summary>
+        /// <see href="EN"/> : Returns the assigned value of the first found Attribute of the Enum. | 
+        /// <see href="TR"/> : Enum'a ait, ilk bulduğu Özniteliğin atanan değerini verir.
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enum"></param>
+        /// <returns></returns>
         public static object GetEnumFirstCustomAttributeValue<TEnum>(this TEnum @enum) where TEnum : struct, Enum
         {
             var enumMember = typeof(TEnum).GetMember(@enum.GetEnumName()).FirstOrDefault();
@@ -38,6 +67,14 @@
             return enumAttributeValue;
         }
 
+        /// <summary>
+        /// <see href="EN"/> : Returns a string of assigned values ​​of all given Attributes belonging to the Enum. | 
+        /// <see href="TR"/> : Enum'a ait, verilen tüm Özniteliklerin atanan değerleri dizesini verir.
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enum"></param>
+        /// <param name="customAttributesTypes"></param>
+        /// <returns></returns>
         public static object[] GetEnumCustomAttributesValues<TEnum>(this TEnum @enum, params Type[] customAttributesTypes) where TEnum : struct, Enum
         {
             List<object> values = new List<object>();
@@ -51,6 +88,13 @@
             return array;
         }
 
+        /// <summary>
+        /// <see href="EN"/> : Returns the string of values of all Attributes belonging to the Enum. | 
+        /// <see href="TR"/> : Enum'a ait tüm Özniteliklerin değerleri dizesini verir.
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enum"></param>
+        /// <returns></returns>
         public static object[] GetEnumAllCustomAttributesValues<TEnum>(this TEnum @enum) where TEnum : struct, Enum
         {
             var enumMember = typeof(TEnum).GetMember(@enum.GetEnumName()).FirstOrDefault();
@@ -64,7 +108,13 @@
             return values.ToArray();
         }
 
-        /// Summary : Key olarak Enum içerisindeki isimleri, Value olarak da Enum'a ait değeri verir (<src name="TValue"/> ye verilen değer tipi ne ise o)
+        /// <summary>
+        /// <see href="EN"/> : Returns the names in the Enum as Key and the value of the Enum as Value (whatever the value type given to <see href="TValue"/> is) |
+        /// <see href="TR"/> : Key olarak Enum içerisindeki isimleri, Value olarak da Enum'a ait değeri verir (<see href="TValue"/> ye verilen değer tipi ne ise o)
+        /// </summary>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="enumType"></param>
+        /// <returns></returns>
         public static List<KeyValuePair<string, TValue>> GetEnumMemberNamesAndValues<TValue>(this Type enumType) /*where TEnum : IConvertible// for enum*/
         {
             var dict = new Dictionary<string, TValue>();
@@ -76,7 +126,12 @@
             return dict.ToList();
         }
 
-        /// Summary : Key olarak Enum içerisindeki isimleri, Value olarak da Enum'a ait değeri verir
+        /// <summary>
+        /// <see href="EN"/> : Returns the names in the Enum as Key and the value of the Enum as Value. |
+        /// <see href="TR"/> : Key olarak Enum içerisindeki isimleri, Value olarak da Enum'a ait değeri verir.
+        /// </summary>
+        /// <param name="enumType"></param>
+        /// <returns></returns>
         public static List<KeyValuePair<string, int>> GetEnumMemberNamesAndIntValues(this Type enumType) /*where TEnum : IConvertible// for enum*/
         {
             var dict = new Dictionary<string, int>();

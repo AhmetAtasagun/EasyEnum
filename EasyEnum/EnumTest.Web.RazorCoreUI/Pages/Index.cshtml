@@ -1,0 +1,34 @@
+﻿@page
+@using EasyEnum.Core
+@using EnumTest.Web.RazorCoreUI.Objects
+@using static EnumTest.Web.RazorCoreUI.Objects.AttributeAndEnums
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to EasyEnum</h1>
+    <p>Testing select tag</p>
+
+    <h3>Standart Uygulama</h3>
+    <select class="form-control">
+        <option value="@((int)Units.Box)">@Enum.GetName(Units.Box.GetType(),(int)Units.Box)</option>
+        <option value="@((int)Units.Pallet)">@Enum.GetName(Units.Pallet.GetType(),(int)Units.Pallet)</option>
+        <option value="@((int)Units.Piece)">@Enum.GetName(Units.Piece.GetType(),(int)Units.Piece)</option>
+    </select>
+    <br />
+    <select class="form-control">
+        @foreach (int enumValue in @Enum.GetValues(typeof(Units)))
+        {
+            <option value="@enumValue">@Enum.GetName(typeof(Units),enumValue)</option>
+        }
+    </select>
+    <br />
+    <select class="form-control" asp-items=Html.GetEnumSelectList(typeof(Units))></select>
+    <hr />
+    <h3>Razor Page Html Helper Uygulama</h3>
+    <select class="form-control" asp-items="HtmlHelpers.ForSelect<Units>().Select(s => new SelectListItem(s.Name,s.Value.ToString()))"></select>
+    <br />
+    <select class="form-control" asp-items="HtmlHelpers.ForSelectCustomValues<Units, string>(typeof(ViewTextAttribute)).Select(s => new SelectListItem(s.CustomValue,s.Value.ToString()))"></select>
+</div>

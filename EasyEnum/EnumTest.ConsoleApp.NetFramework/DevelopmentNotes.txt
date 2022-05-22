@@ -1,0 +1,1 @@
+﻿Yalnızca NetFramework kütüphanesini referans olarak kabul ediyor.

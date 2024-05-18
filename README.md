@@ -1,3 +1,5 @@
+img[nuget] { width: 50px; }
+
 # EasyEnum
 
 Make things easy with enum extensions
@@ -14,8 +16,12 @@ Make things easy with enum extensions
 Nuget Package Manager > Search : "EasyEnum"<br>
 Select EasyEnum library and install right side
 &nbsp;<br>
-&nbsp;<br>
-Note : Not Avaible, Incoming...
+
+<a href="https://www.nuget.org/packages/Atasagun.Utilities.EasyEnum" target="_blank">
+    <img src="https://camo.githubusercontent.com/8ecc494cb07c36b28c07a52ff10938ea12080ace84a4671090896968d22c8925/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e756765742d562e312e302e302d626c7565" alt="Static Badge" 
+        data-canonical-src="https://img.shields.io/badge/Nuget-V.1.0.0-blue" style="max-width: 100%;">
+</a>
+
 &nbsp;<br>
 &nbsp;<br>
 - Test Objects

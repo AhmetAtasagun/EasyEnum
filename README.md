@@ -1,5 +1,3 @@
-img[nuget] { width: 50px; }
-
 # EasyEnum
 
 Make things easy with enum extensions
